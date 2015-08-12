@@ -1,0 +1,42 @@
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+
+<div class="container">
+	<div class="jumbotron text-center" style="background-color: #fff;">
+		<h2>TODO Update</h2>
+	</div>
+	<div class="col-lg-4 col-lg-offset-4">
+		<form action="#" th:action="@{/todo/update}" th:object="${todo}"
+			method="post">
+			<p>
+				<input type="hidden" th:field="*{id}" />
+			</p>
+			<p>
+				Name: <input type="text" class="form-control" th:field="*{name}" />
+			</p>
+			<p>
+				Description:
+				<textarea rows="3" class="form-control" cols="" th:field="*{desc}"></textarea>
+			</p>
+			<p>
+				<input type="checkbox" name="done" th:checked="*{done}" />
+			</p>
+			<p>
+				Due Date: <input type="date" class="form-control"
+					th:field="*{dueDate}" />
+			</p>
+			<p>
+				<input type="submit" class="btn btn-primary form-control"
+					value="Submit" />
+			</p>
+		</form>
+		<p th:text="${message}" th:if="${message} != null"></p>
+		<div class="pull-right">
+			<form action="#" th:action="@{/todo/goback}" method="post">
+				<button class="btn btn-default">Go Back</button>
+			</form>
+		</div>
+	</div>
+
+</div>

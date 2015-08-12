@@ -1,0 +1,50 @@
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<div class="container">
+	<div class="jumbotron text-center" style="background-color: #fff;">
+		<h2>TODO List</h2>
+	</div>
+
+	<table class="table table-hover">
+		<thead>
+			<th>ID</th>
+			<th>Name</th>
+			<th>Description</th>
+			<th>Status</th>
+			<th>Due Date</th>
+			<th>Mark As Done</th>
+			<th>Edit</th>
+
+		</thead>
+		<tbody>
+			<tr th:each="todo : ${todoList}">
+
+				<td th:text="${todo.id}"></td>
+
+				<td th:text="${todo.name}"></td>
+
+				<td th:text="${todo.desc}"></td>
+
+				<td><input type="checkbox" class="checkbox" name="active"
+					th:checked="${todo.done}" /></td>
+
+				<td>
+					<p th:text="${todo.readableDate()}"></p>
+				</td>
+				<td>
+					<form action="#" th:action="@{/todo/markasdone}" method="post">
+						<button name="id" value="${todo.id}" th:value="${todo.id}"
+							class="btn btn-success">Mark As Done</button>
+					</form>
+				</td>
+				<td>
+					<form action="#" th:action="@{/todo/edit}" method="get">
+						<button name="id" value="${todo.id}" th:value="${todo.id}"
+							class="btn btn-primary">Edit</button>
+					</form>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

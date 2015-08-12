@@ -1,0 +1,32 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+
+<div class="container">
+	<div class="jumbotron text-center" style="background-color:white">
+		<h2>TODO Create</h2>
+	</div>
+	<div class="col-lg-4 col-lg-offset-4 ">
+		<form action="#" th:action="@{/todo/create}" th:object="${todo}"
+			method="post">
+			<p>
+				Name: <input type="text" class="form-control" th:field="*{name}"
+					placeholder="Name" />
+			</p>
+			<p>
+				Desc: <input type="text" class="form-control" th:field="*{desc}"
+					placeholder="Description" />
+			</p>
+			<p>
+				DueDate: <input type="date" class="form-control" th:field="*{dueDate}" />
+			</p>
+			<p>
+				<label for="ch">Is Done: <input type="checkbox" id="ch" class="checkbox" th:field="*{done}" /></label>
+			</p>
+			<p>
+				<input type="submit" value="Submit" class="btn btn-primary form-control" /> <br/><br/>
+				<input type="reset" value="Reset" class="btn btn-danger form-control" />
+			</p>
+		</form>
+	</div>
+
+</div>
